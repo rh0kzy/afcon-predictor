@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+venv/
+ENV/
+
+# Data
+data/processed/
+data/external/
+!data/raw/
+
+# Models
+models/*.pkl
+
+# Outputs
+outputs/figures/
+outputs/reports/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
