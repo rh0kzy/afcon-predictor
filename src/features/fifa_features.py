@@ -7,4 +7,8 @@ def calculate_fifa_features(df):
     # Point difference
     df['point_diff'] = df['home_points'] - df['away_points']
     
+    # Rank change (momentum)
+    df['home_rank_momentum'] = df['home_rank_change']
+    df['away_rank_momentum'] = df['away_rank_change']
+    
     return df

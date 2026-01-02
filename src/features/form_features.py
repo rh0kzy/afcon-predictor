@@ -24,14 +24,15 @@ def calculate_form(df):
     team_stats['rolling_points'] = team_stats.groupby('team')['points'].transform(lambda x: x.shift().rolling(ROLLING_WINDOW, min_periods=1).mean())
     team_stats['rolling_goals_for'] = team_stats.groupby('team')['goals_for'].transform(lambda x: x.shift().rolling(ROLLING_WINDOW, min_periods=1).mean())
     team_stats['rolling_goals_against'] = team_stats.groupby('team')['goals_against'].transform(lambda x: x.shift().rolling(ROLLING_WINDOW, min_periods=1).mean())
+    team_stats['rolling_goal_diff'] = team_stats['rolling_goals_for'] - team_stats['rolling_goals_against']
     
     # Merge back to original df
-    df = df.merge(team_stats[team_stats['is_home'] == 1][['date', 'team', 'rolling_points', 'rolling_goals_for', 'rolling_goals_against']], 
+    df = df.merge(team_stats[team_stats['is_home'] == 1][['date', 'team', 'rolling_points', 'rolling_goals_for', 'rolling_goals_against', 'rolling_goal_diff']], 
                   left_on=['date', 'home_team'], right_on=['date', 'team'], how='left').drop(columns='team')
-    df = df.rename(columns={'rolling_points': 'home_form', 'rolling_goals_for': 'home_avg_goals_for', 'rolling_goals_against': 'home_avg_goals_against'})
+    df = df.rename(columns={'rolling_points': 'home_form', 'rolling_goals_for': 'home_avg_goals_for', 'rolling_goals_against': 'home_avg_goals_against', 'rolling_goal_diff': 'home_goal_diff_form'})
     
-    df = df.merge(team_stats[team_stats['is_home'] == 0][['date', 'team', 'rolling_points', 'rolling_goals_for', 'rolling_goals_against']], 
+    df = df.merge(team_stats[team_stats['is_home'] == 0][['date', 'team', 'rolling_points', 'rolling_goals_for', 'rolling_goals_against', 'rolling_goal_diff']], 
                   left_on=['date', 'away_team'], right_on=['date', 'team'], how='left').drop(columns='team')
-    df = df.rename(columns={'rolling_points': 'away_form', 'rolling_goals_for': 'away_avg_goals_for', 'rolling_goals_against': 'away_avg_goals_against'})
+    df = df.rename(columns={'rolling_points': 'away_form', 'rolling_goals_for': 'away_avg_goals_for', 'rolling_goals_against': 'away_avg_goals_against', 'rolling_goal_diff': 'away_goal_diff_form'})
     
     return df

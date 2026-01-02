@@ -5,24 +5,32 @@ import os
 sys.path.append(os.path.abspath('.'))
 
 from src.data.clean_matches import clean_matches
+from src.data.clean_fifa import clean_fifa_rankings
+from src.data.clean_goals import clean_goals
 from src.data.merge_fifa import merge_fifa_rankings
 from src.features.form_features import calculate_form
+from src.features.h2h_features import calculate_h2h
 from src.features.fifa_features import calculate_fifa_features
+from src.features.context_features import calculate_context_features
 from src.models.train import train_model
-from src.config import FIFA_CLEANED, FEATURES_TABLE
+from src.config import FEATURES_TABLE
 
 def run_pipeline():
     print("--- Starting Pipeline ---")
     
-    print("1. Cleaning matches...")
+    print("1. Cleaning data...")
     clean_matches()
+    clean_fifa_rankings()
+    clean_goals()
     
-    print("2. Merging FIFA rankings...")
+    print("2. Merging datasets...")
     df = merge_fifa_rankings()
     
     print("3. Engineering features...")
     df = calculate_form(df)
+    df = calculate_h2h(df)
     df = calculate_fifa_features(df)
+    df = calculate_context_features(df)
     
     # Save features
     df.to_csv(FEATURES_TABLE, index=False)

@@ -29,7 +29,7 @@
 ### FIFA Ranking Data
 - [x] Parse `rank_date` to datetime
 - [x] Normalize country names
-- [ ] Remove duplicates
+- [x] Remove duplicates
 - [x] Sort by `rank_date`
 - [x] Keep relevant columns only
 - [x] Save output as `data/processed/fifa_cleaned.csv`
@@ -41,11 +41,11 @@
 
 ## PHASE 3 — Data Validation
 **Goal:** Ensure data consistency before feature engineering.
-- [ ] Verify team names match across all datasets
-- [ ] Verify date ranges overlap correctly
-- [ ] Ensure no future data leakage
-- [ ] Check number of matches per year
-- [ ] Check number of teams
+- [x] Verify team names match across all datasets
+- [x] Verify date ranges overlap correctly
+- [x] Ensure no future data leakage
+- [x] Check number of matches per year
+- [x] Check number of teams
 
 ## PHASE 4 — Feature Engineering
 **Goal:** Build predictive features.
@@ -55,10 +55,10 @@
 - [x] Points last 5 matches
 - [x] Goals scored last 5 matches
 - [x] Goals conceded last 5 matches
-- [ ] Goal difference last 5 matches
+- [x] Goal difference last 5 matches
 ### Head-to-Head Features
-- [ ] Historical win rate (home vs away)
-- [ ] Safe handling when no history exists
+- [x] Historical win rate (home vs away)
+- [x] Safe handling when no history exists
 ### FIFA Features
 - [x] Home FIFA rank (latest before match)
 - [x] Away FIFA rank
@@ -66,16 +66,16 @@
 - [x] Home FIFA points
 - [x] Away FIFA points
 - [x] FIFA points difference
-- [ ] Rank change (momentum)
+- [x] Rank change (momentum)
 ### Context Features
-- [ ] Home advantage flag
-- [ ] Neutral venue flag
+- [x] Home advantage flag
+- [x] Neutral venue flag
 - [ ] Tournament importance weighting (optional)
 - [x] Save final feature table as `data/processed/features.csv`
 
 ## PHASE 5 — Train / Test Split
 **Goal:** Prepare data for modeling safely.
-- [ ] Perform time-based split (train < 2024, test ≥ 2024)
+- [x] Perform time-based split (train < 2024, test ≥ 2024)
 - [x] Separate features (X) and target (y)
 - [x] Verify no data leakage
 
@@ -84,40 +84,40 @@
 - [ ] Train Logistic Regression (baseline)
 - [x] Train XGBoost or LightGBM (main model)
 - [ ] Tune basic hyperparameters
-- [ ] Select best model
+- [x] Select best model
 - [x] Save trained model to `models/` directory
 
 ## PHASE 7 — Evaluation
 **Goal:** Measure realistic performance.
 - [x] Compute accuracy
-- [ ] Compute log loss
+- [x] Compute log loss
 - [x] Generate confusion matrix
 - [x] Evaluate Win / Draw / Loss performance
 - [ ] Compare against baseline
 
 ## PHASE 8 — AFCON 2025 Prediction
 **Goal:** Predict real tournament matches.
-- [ ] Load official AFCON 2025 fixtures
-- [ ] Generate features using latest available data
-- [ ] Predict probabilities for each match
-- [ ] Export predictions to CSV
+- [x] Load official AFCON 2025 fixtures
+- [x] Generate features using latest available data
+- [x] Predict probabilities for each match
+- [x] Export predictions to CSV
 
 ## PHASE 9 — Tournament Simulation (Optional)
 **Goal:** Simulate AFCON 2025 outcomes.
-- [ ] Simulate group stage using Monte Carlo
-- [ ] Estimate qualification probabilities
-- [ ] Simulate knockout rounds
-- [ ] Estimate title probabilities
+- [x] Simulate group stage using Monte Carlo
+- [x] Estimate qualification probabilities
+- [x] Simulate knockout rounds
+- [x] Estimate title probabilities
 
 ## PHASE 10 — Deployment (Optional)
 **Goal:** Make predictions usable.
 - [x] Create single-match prediction script
-- [ ] Build FastAPI endpoint
-- [ ] Define input/output schema
-- [ ] Test locally
+- [x] Build FastAPI endpoint
+- [x] Define input/output schema
+- [x] Test locally
 
 ## PHASE 11 — Documentation
 **Goal:** Make the project understandable and reusable.
 - [x] Update README with pipeline explanation
-- [ ] Document features used
-- [ ] Document model assumptions and limitations
+- [x] Document features used
+- [x] Document model assumptions and limitations

@@ -16,6 +16,12 @@ def clean_matches():
     # Convert date to datetime
     df['date'] = pd.to_datetime(df['date'])
     
+    # Filter matches (recommended: year ≥ 1992)
+    df = df[df['date'].dt.year >= 1992]
+    
+    # Sort matches chronologically
+    df = df.sort_values('date')
+    
     # Drop rows with missing scores
     df = df.dropna(subset=['home_score', 'away_score'])
     
