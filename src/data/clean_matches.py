@@ -14,7 +14,7 @@ def clean_matches():
     df = df[df['home_team'].isin(CAF_TEAMS) | df['away_team'].isin(CAF_TEAMS)]
     
     # Convert date to datetime
-    df['date'] = pd.to_datetime(df['date'])
+    df['date'] = pd.to_datetime(df['date'], format='mixed')
     
     # Filter matches (recommended: year ≥ 1992)
     df = df[df['date'].dt.year >= 1992]
