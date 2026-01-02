@@ -7,15 +7,15 @@
 - [x] Create `requirements.txt`
 - [x] Create `.gitignore`
 - [x] Create `README.md`
-- [ ] (Optional) Initialize a Git repository
+- [x] (Optional) Initialize a Git repository
 
 ## PHASE 1 — Raw Data Ingestion
 **Goal:** Store original datasets safely (never modify them).
 - [x] Copy `matches.csv` into `data/raw`
 - [x] Copy `fifa_ranking.csv` into `data/raw`
 - [x] Copy `goals.csv` into `data/raw`
-- [ ] Verify CSV encoding and delimiter
-- [ ] Verify column names and date formats
+- [x] Verify CSV encoding and delimiter
+- [x] Verify column names and date formats
 
 ## PHASE 2 — Data Cleaning (No Features Yet)
 **Goal:** Produce clean, normalized datasets using Python scripts only.
@@ -34,10 +34,10 @@
 - [x] Keep relevant columns only
 - [x] Save output as `data/processed/fifa_cleaned.csv`
 ### Goals Data
-- [ ] Verify date alignment
-- [ ] Aggregate goals per team per match if needed
-- [ ] Remove unnecessary historical noise
-- [ ] Save output as `data/processed/goals_cleaned.csv`
+- [x] Verify date alignment
+- [x] Aggregate goals per team per match if needed
+- [x] Remove unnecessary historical noise
+- [x] Save output as `data/processed/goals_cleaned.csv`
 
 ## PHASE 3 — Data Validation
 **Goal:** Ensure data consistency before feature engineering.
