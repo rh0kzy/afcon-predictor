@@ -22,6 +22,7 @@ FEATURES_TABLE = PROCESSED_DATA_DIR / "features.csv"
 # Model Paths
 MODEL_DIR = ROOT_DIR / "models"
 XGB_MODEL_PATH = MODEL_DIR / "xgb_v1.pkl"
+BASELINE_MODEL_PATH = MODEL_DIR / "logistic_baseline.pkl"
 SCALER_PATH = MODEL_DIR / "scaler.pkl"
 
 # Output Paths

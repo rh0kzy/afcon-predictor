@@ -81,7 +81,7 @@
 
 ## PHASE 6 — Modeling
 **Goal:** Train predictive models.
-- [ ] Train Logistic Regression (baseline)
+- [x] Train Logistic Regression (baseline)
 - [x] Train XGBoost or LightGBM (main model)
 - [ ] Tune basic hyperparameters
 - [x] Select best model
@@ -93,7 +93,7 @@
 - [x] Compute log loss
 - [x] Generate confusion matrix
 - [x] Evaluate Win / Draw / Loss performance
-- [ ] Compare against baseline
+- [x] Compare against baseline
 
 ## PHASE 8 — AFCON 2025 Prediction
 **Goal:** Predict real tournament matches.

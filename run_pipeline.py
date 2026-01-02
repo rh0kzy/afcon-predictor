@@ -13,6 +13,8 @@ from src.features.h2h_features import calculate_h2h
 from src.features.fifa_features import calculate_fifa_features
 from src.features.context_features import calculate_context_features
 from src.models.train import train_model
+from src.models.train_baseline import train_baseline
+from src.models.evaluate import compare_models
 from src.config import FEATURES_TABLE
 
 def run_pipeline():
@@ -36,8 +38,12 @@ def run_pipeline():
     df.to_csv(FEATURES_TABLE, index=False)
     print(f"Features saved to {FEATURES_TABLE}")
     
-    print("4. Training model...")
+    print("4. Training models...")
+    train_baseline()
     train_model()
+    
+    print("5. Evaluating and comparing models...")
+    compare_models()
     
     print("--- Pipeline Completed Successfully ---")
 
