@@ -70,7 +70,7 @@
 ### Context Features
 - [x] Home advantage flag
 - [x] Neutral venue flag
-- [ ] Tournament importance weighting (optional)
+- [x] Tournament importance weighting (optional)
 - [x] Save final feature table as `data/processed/features.csv`
 
 ## PHASE 5 — Train / Test Split

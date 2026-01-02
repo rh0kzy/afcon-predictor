@@ -16,7 +16,7 @@ def evaluate_model():
         'home_rank', 'away_rank', 'home_points', 'away_points', 
         'home_form', 'away_form', 'home_goal_diff_form', 'away_goal_diff_form',
         'rank_diff', 'point_diff', 'home_rank_momentum', 'away_rank_momentum',
-        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral'
+        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight'
     ]
     
     df = df.dropna(subset=features)

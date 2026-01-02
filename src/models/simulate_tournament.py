@@ -54,7 +54,8 @@ def get_match_probs_fast(home_team, away_team, model, historical_df):
         'h2h_win_rate': 0.5, # Simplified for simulation
         'h2h_game_count': 0,
         'is_home_adv': 0,
-        'is_neutral': 1
+        'is_neutral': 1,
+        'tournament_weight': 8 # AFCON weight
     }
     
     X = pd.DataFrame([match_feats])
