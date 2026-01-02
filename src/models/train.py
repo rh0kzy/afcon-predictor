@@ -35,7 +35,15 @@ def train_model():
     
     print(f"Training on {len(X_train)} matches, testing on {len(X_test)} matches.")
     
-    model = xgb.XGBClassifier(n_estimators=100, learning_rate=0.1, max_depth=5, random_state=42)
+    model = xgb.XGBClassifier(
+        n_estimators=100, 
+        learning_rate=0.01, 
+        max_depth=3, 
+        subsample=0.8,
+        random_state=42,
+        use_label_encoder=False,
+        eval_metric='mlogloss'
+    )
     model.fit(X_train, y_train)
     
     # Save model

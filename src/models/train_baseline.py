@@ -39,7 +39,13 @@ def train_baseline():
     scaler = StandardScaler()
     X_train_scaled = scaler.fit_transform(X_train)
     
-    model = LogisticRegression(multi_class='multinomial', max_iter=1000, random_state=42)
+    model = LogisticRegression(
+        C=0.01,
+        solver='lbfgs',
+        multi_class='multinomial', 
+        max_iter=1000, 
+        random_state=42
+    )
     model.fit(X_train_scaled, y_train)
     
     # Save model and scaler

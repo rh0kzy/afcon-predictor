@@ -83,7 +83,7 @@
 **Goal:** Train predictive models.
 - [x] Train Logistic Regression (baseline)
 - [x] Train XGBoost or LightGBM (main model)
-- [ ] Tune basic hyperparameters
+- [x] Tune basic hyperparameters
 - [x] Select best model
 - [x] Save trained model to `models/` directory
 
