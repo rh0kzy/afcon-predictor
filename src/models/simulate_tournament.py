@@ -23,7 +23,10 @@ def get_team_features(team, historical_df):
             'goal_diff_form': team_latest.iloc[0]['home_goal_diff_form'],
             'rank_momentum': team_latest.iloc[0]['home_rank_momentum'],
             'elo': team_latest.iloc[0]['home_elo'],
-            'travel_dist': team_latest.iloc[0]['home_travel_dist']
+            'travel_dist': team_latest.iloc[0]['home_travel_dist'],
+            'squad_value': team_latest.iloc[0]['home_squad_value'],
+            'squad_quality': team_latest.iloc[0]['home_squad_quality'],
+            'log_value': team_latest.iloc[0]['log_home_value']
         }
     else:
         return {
@@ -34,7 +37,10 @@ def get_team_features(team, historical_df):
             'goal_diff_form': team_latest.iloc[0]['away_goal_diff_form'],
             'rank_momentum': team_latest.iloc[0]['away_rank_momentum'],
             'elo': team_latest.iloc[0]['away_elo'],
-            'travel_dist': team_latest.iloc[0]['away_travel_dist']
+            'travel_dist': team_latest.iloc[0]['away_travel_dist'],
+            'squad_value': team_latest.iloc[0]['away_squad_value'],
+            'squad_quality': team_latest.iloc[0]['away_squad_quality'],
+            'log_value': team_latest.iloc[0]['log_away_value']
         }
 
 def get_match_probs_fast(home_team, away_team, model, team_features):
@@ -69,7 +75,16 @@ def get_match_probs_fast(home_team, away_team, model, team_features):
         'away_elo': away_feats['elo'],
         'elo_diff': home_feats['elo'] - away_feats['elo'],
         'home_travel_dist': home_feats['travel_dist'],
-        'away_travel_dist': away_feats['travel_dist']
+        'away_travel_dist': away_feats['travel_dist'],
+        'home_squad_value': home_feats['squad_value'],
+        'away_squad_value': away_feats['squad_value'],
+        'home_squad_quality': home_feats['squad_quality'],
+        'away_squad_quality': away_feats['squad_quality'],
+        'log_home_value': home_feats['log_value'],
+        'log_away_value': away_feats['log_value'],
+        'value_diff': home_feats['squad_value'] - away_feats['squad_value'],
+        'value_ratio': home_feats['squad_value'] / (away_feats['squad_value'] + 1e-6),
+        'quality_diff': home_feats['squad_quality'] - away_feats['squad_quality']
     }
     
     X = pd.DataFrame([match_feats])

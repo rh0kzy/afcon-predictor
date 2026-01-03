@@ -127,7 +127,7 @@
 - [x] Implement dynamic Elo Rating system
 - [x] Implement Weighted Form (Time Decay)
 - [x] Add "Travel Factor" (Distance to host cities in Morocco)
-- [ ] (Optional) Integrate Squad Value / Quality data (e.g., Transfermarkt)
+- [x] (Optional) Integrate Squad Value / Quality data (e.g., Transfermarkt)
 
 ## PHASE 13 — Deep Evaluation & Interpretability
 **Goal:** Move beyond simple accuracy to industry-standard metrics.

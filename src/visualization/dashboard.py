@@ -7,8 +7,8 @@ import plotly.express as px
 from PIL import Image
 
 # Paths
-MODEL_PATH = "models/xgboost_model.pkl"
-FEATURES_TABLE = "data/processed/match_features.csv"
+MODEL_PATH = "models/xgb_v1.pkl"
+FEATURES_TABLE = "data/processed/features.csv"
 SHAP_PLOT_PATH = "outputs/figures/shap_summary.png"
 
 st.set_page_config(page_title="AFCON 2025 Predictor", layout="wide")
@@ -43,7 +43,10 @@ def get_team_features(team_name, df):
             'goal_diff_form': latest['home_goal_diff_form'],
             'rank_momentum': latest['home_rank_momentum'],
             'elo': latest['home_elo'],
-            'travel_dist': latest['home_travel_dist']
+            'travel_dist': latest['home_travel_dist'],
+            'squad_value': latest['home_squad_value'],
+            'squad_quality': latest['home_squad_quality'],
+            'log_value': latest['log_home_value']
         }
     else:
         return {
@@ -54,7 +57,10 @@ def get_team_features(team_name, df):
             'goal_diff_form': latest['away_goal_diff_form'],
             'rank_momentum': latest['away_rank_momentum'],
             'elo': latest['away_elo'],
-            'travel_dist': latest['away_travel_dist']
+            'travel_dist': latest['away_travel_dist'],
+            'squad_value': latest['away_squad_value'],
+            'squad_quality': latest['away_squad_quality'],
+            'log_value': latest['log_away_value']
         }
 
 def main():
@@ -104,7 +110,16 @@ def main():
                 'away_elo': a_feats['elo'],
                 'elo_diff': h_feats['elo'] - a_feats['elo'],
                 'home_travel_dist': h_feats['travel_dist'],
-                'away_travel_dist': a_feats['travel_dist']
+                'away_travel_dist': a_feats['travel_dist'],
+                'home_squad_value': h_feats['squad_value'],
+                'away_squad_value': a_feats['squad_value'],
+                'home_squad_quality': h_feats['squad_quality'],
+                'away_squad_quality': a_feats['squad_quality'],
+                'log_home_value': h_feats['log_value'],
+                'log_away_value': a_feats['log_value'],
+                'value_diff': h_feats['squad_value'] - a_feats['squad_value'],
+                'value_ratio': h_feats['squad_value'] / (a_feats['squad_value'] + 1e-6),
+                'quality_diff': h_feats['squad_quality'] - a_feats['squad_quality']
             }
             
             X = pd.DataFrame([match_feats])

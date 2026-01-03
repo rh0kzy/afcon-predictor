@@ -19,7 +19,9 @@ def train_baseline():
         'home_goal_diff_form', 'away_goal_diff_form',
         'rank_diff', 'point_diff', 'home_rank_momentum', 'away_rank_momentum',
         'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight',
-        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist'
+        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist',
+        'home_squad_value', 'away_squad_value', 'home_squad_quality', 'away_squad_quality',
+        'log_home_value', 'log_away_value', 'value_diff', 'value_ratio', 'quality_diff'
     ]
     
     # Drop rows with NaN in features
@@ -44,7 +46,6 @@ def train_baseline():
     model = LogisticRegression(
         C=0.01,
         solver='saga',
-        multi_class='multinomial', 
         max_iter=1000, 
         random_state=42
     )

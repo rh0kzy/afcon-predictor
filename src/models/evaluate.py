@@ -46,7 +46,9 @@ def evaluate_model(model_path, model_name, is_baseline=False):
         'home_goal_diff_form', 'away_goal_diff_form',
         'rank_diff', 'point_diff', 'home_rank_momentum', 'away_rank_momentum',
         'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight',
-        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist'
+        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist',
+        'home_squad_value', 'away_squad_value', 'home_squad_quality', 'away_squad_quality',
+        'log_home_value', 'log_away_value', 'value_diff', 'value_ratio', 'quality_diff'
     ]
     
     df = df.dropna(subset=features)

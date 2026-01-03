@@ -3,7 +3,7 @@
 A professional-grade sports modeling system for predicting the Africa Cup of Nations 2025.
 
 ## Features
-- **Advanced Feature Engineering**: Elo ratings, weighted form (time decay), travel fatigue factors, and FIFA rankings.
+- **Advanced Feature Engineering**: Elo ratings, weighted form (time decay), travel fatigue factors, FIFA rankings, and **Squad Market Values**.
 - **Machine Learning**: Optimized XGBoost and Logistic Regression models.
 - **Explainability**: SHAP values to understand model decisions.
 - **Evaluation**: Ranked Probability Score (RPS) and betting backtest (ROI analysis).

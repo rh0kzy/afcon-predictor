@@ -14,6 +14,7 @@ from src.features.fifa_features import calculate_fifa_features
 from src.features.context_features import calculate_context_features
 from src.features.elo_features import calculate_elo
 from src.features.travel_features import calculate_travel_distance
+from src.features.squad_features import calculate_squad_features
 from src.models.train import train_model
 from src.models.train_baseline import train_baseline
 from src.models.evaluate import compare_models
@@ -37,6 +38,7 @@ def run_pipeline():
     df = calculate_context_features(df)
     df = calculate_elo(df)
     df = calculate_travel_distance(df)
+    df = calculate_squad_features(df)
     
     # Save features
     df.to_csv(FEATURES_TABLE, index=False)
