@@ -5,6 +5,8 @@ from src.features.form_features import calculate_form
 from src.features.h2h_features import calculate_h2h
 from src.features.fifa_features import calculate_fifa_features
 from src.features.context_features import calculate_context_features
+from src.features.elo_features import calculate_elo
+from src.features.travel_features import calculate_travel_distance
 
 def predict_afcon_2025():
     # Load model
@@ -20,24 +22,26 @@ def predict_afcon_2025():
     historical_df['date'] = pd.to_datetime(historical_df['date'])
     
     # Combine fixtures with historical data to calculate rolling features
-    # We only need the most recent matches for each team
     combined_df = pd.concat([historical_df, fixtures], ignore_index=True).sort_values('date')
     
-    # Re-calculate features (this is a bit redundant but ensures consistency)
-    # In a real app, you'd just take the last known state for each team
+    # Re-calculate features
     combined_df = calculate_form(combined_df)
     combined_df = calculate_h2h(combined_df)
     combined_df = calculate_fifa_features(combined_df)
     combined_df = calculate_context_features(combined_df)
+    combined_df = calculate_elo(combined_df)
+    combined_df = calculate_travel_distance(combined_df)
     
     # Filter back to just the fixtures
     prediction_df = combined_df[combined_df['home_score'].isna()].copy()
     
     features = [
         'home_rank', 'away_rank', 'home_points', 'away_points', 
-        'home_form', 'away_form', 'home_goal_diff_form', 'away_goal_diff_form',
+        'home_form', 'away_form', 'home_weighted_form', 'away_weighted_form',
+        'home_goal_diff_form', 'away_goal_diff_form',
         'rank_diff', 'point_diff', 'home_rank_momentum', 'away_rank_momentum',
-        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight'
+        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight',
+        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist'
     ]
     
     # Ensure all features exist and fill NaNs

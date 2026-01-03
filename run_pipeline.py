@@ -12,6 +12,8 @@ from src.features.form_features import calculate_form
 from src.features.h2h_features import calculate_h2h
 from src.features.fifa_features import calculate_fifa_features
 from src.features.context_features import calculate_context_features
+from src.features.elo_features import calculate_elo
+from src.features.travel_features import calculate_travel_distance
 from src.models.train import train_model
 from src.models.train_baseline import train_baseline
 from src.models.evaluate import compare_models
@@ -33,6 +35,8 @@ def run_pipeline():
     df = calculate_h2h(df)
     df = calculate_fifa_features(df)
     df = calculate_context_features(df)
+    df = calculate_elo(df)
+    df = calculate_travel_distance(df)
     
     # Save features
     df.to_csv(FEATURES_TABLE, index=False)

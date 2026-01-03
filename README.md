@@ -1,62 +1,42 @@
-# AFCON Predictor
+# AFCON 2025 Predictor 🏆
 
-A machine learning project to predict the outcomes of African Cup of Nations (AFCON) matches.
-
-## Project Structure
-
-- `data/`: Raw and processed datasets.
-- `notebooks/`: Jupyter notebooks for exploration and experimentation.
-- `src/`: Source code for data processing, feature engineering, and modeling.
-- `models/`: Saved model files.
-- `outputs/`: Generated figures and reports.
-
-## Setup
-
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. Run the pipeline:
-   ```bash
-   python run_pipeline.py
-   ```
+A professional-grade sports modeling system for predicting the Africa Cup of Nations 2025.
 
 ## Features
+- **Advanced Feature Engineering**: Elo ratings, weighted form (time decay), travel fatigue factors, and FIFA rankings.
+- **Machine Learning**: Optimized XGBoost and Logistic Regression models.
+- **Explainability**: SHAP values to understand model decisions.
+- **Evaluation**: Ranked Probability Score (RPS) and betting backtest (ROI analysis).
+- **Simulation**: 10,000-run Monte Carlo simulation for tournament outcomes.
+- **Interactive Dashboard**: Streamlit app for real-time predictions and visualization.
 
-- **FIFA Rankings integration**: Uses historical FIFA rankings to gauge team strength.
-- **Rolling form features**: Calculates points and goal differences over the last 5 matches.
-- **Head-to-head statistics**: Incorporates historical performance between specific team pairs.
-- **Contextual features**: Includes home advantage and neutral venue flags.
-- **XGBoost classification model**: Predicts Home Win, Draw, or Away Win probabilities.
+## Installation
+1. Clone the repository.
+2. Create a virtual environment: `python -m venv .venv`
+3. Install dependencies: `pip install -e .`
 
 ## Usage
-
-### 1. Data Pipeline
-Run the full pipeline to clean data, engineer features, and train the model:
+### Run the full pipeline:
 ```bash
-python run_pipeline.py
+./run_pipeline.bat
 ```
 
-### 2. Predictions
-Predict outcomes for AFCON 2025 fixtures:
+### Launch the dashboard:
 ```bash
-$env:PYTHONPATH = "."; python src/models/predict_afcon.py
+streamlit run src/visualization/dashboard.py
 ```
 
-### 3. Tournament Simulation
-Simulate the knockout stage to estimate title probabilities:
-```bash
-$env:PYTHONPATH = "."; python src/models/simulate_tournament.py
-```
-
-### 4. API
-Start the FastAPI server for real-time predictions:
-```bash
-$env:PYTHONPATH = "."; python api/main.py
-```
+## Project Structure
+- `src/data`: Data cleaning and ingestion.
+- `src/features`: Feature engineering (Elo, Travel, Form).
+- `src/models`: Training, evaluation, and simulation.
+- `src/visualization`: Streamlit dashboard.
+- `data/`: Raw and processed data.
+- `models/`: Saved model artifacts.
+- `outputs/`: Figures and evaluation reports.
 
 ## Model Performance
-The current XGBoost model achieves approximately **67% accuracy** on the test set (matches from 2024 onwards).
-- **Log Loss**: ~0.78
-- **Key Features**: FIFA Rank Difference, Team Form, Home Advantage.
+The current XGBoost model achieves high accuracy on high-confidence predictions (~77% for prob > 0.7).
+- **Primary Metric**: Ranked Probability Score (RPS).
+- **Key Features**: Elo Difference, FIFA Rank Difference, Weighted Form.
+

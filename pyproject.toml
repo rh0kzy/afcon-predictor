@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "afcon-predictor"
+version = "0.1.0"
+description = "A professional-grade AFCON 2025 match predictor using XGBoost, Elo ratings, and Monte Carlo simulations."
+authors = [
+    {name = "rh0kzy"}
+]
+dependencies = [
+    "pandas",
+    "numpy==1.26.4",
+    "xgboost",
+    "scikit-learn",
+    "shap",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "streamlit",
+    "requests",
+    "pillow"
+]
+requires-python = ">=3.11"
+
+[project.scripts]
+afcon-train = "src.models.train_model:main"
+afcon-simulate = "src.models.simulate_tournament:simulate_tournament"
+afcon-dashboard = "streamlit run src/visualization/dashboard.py"

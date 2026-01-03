@@ -121,3 +121,27 @@
 - [x] Update README with pipeline explanation
 - [x] Document features used
 - [x] Document model assumptions and limitations
+
+## PHASE 12 — Advanced Feature Engineering (The "Pro" Edge)
+**Goal:** Implement more nuanced metrics used in professional sports modeling.
+- [x] Implement dynamic Elo Rating system
+- [x] Implement Weighted Form (Time Decay)
+- [x] Add "Travel Factor" (Distance to host cities in Morocco)
+- [ ] (Optional) Integrate Squad Value / Quality data (e.g., Transfermarkt)
+
+## PHASE 13 — Deep Evaluation & Interpretability
+**Goal:** Move beyond simple accuracy to industry-standard metrics.
+- [x] Compute Ranked Probability Score (RPS)
+- [x] Implement Profit/Loss Backtesting (Virtual $100 Budget)
+- [x] Add SHAP Explainability (Feature Importance summary plots)
+
+## PHASE 14 — Advanced Simulation & Visuals
+**Goal:** Enhance the simulation engine and create a user-facing interface.
+- [x] Enhance Monte Carlo Simulation (10,000+ runs for title probabilities)
+- [x] Build Interactive Dashboard (Streamlit) for H2H and predictions
+
+## PHASE 15 — Professionalization & MLOps
+**Goal:** Structure the project for a professional portfolio.
+- [x] Modularize code into a formal Python package structure
+- [x] Implement Automated Pipeline (DVC or Makefile)
+

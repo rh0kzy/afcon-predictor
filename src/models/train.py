@@ -15,9 +15,11 @@ def train_model():
     # Select features
     features = [
         'home_rank', 'away_rank', 'home_points', 'away_points', 
-        'home_form', 'away_form', 'home_goal_diff_form', 'away_goal_diff_form',
+        'home_form', 'away_form', 'home_weighted_form', 'away_weighted_form',
+        'home_goal_diff_form', 'away_goal_diff_form',
         'rank_diff', 'point_diff', 'home_rank_momentum', 'away_rank_momentum',
-        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight'
+        'h2h_win_rate', 'h2h_game_count', 'is_home_adv', 'is_neutral', 'tournament_weight',
+        'home_elo', 'away_elo', 'elo_diff', 'home_travel_dist', 'away_travel_dist'
     ]
     
     # Drop rows with NaN in features (e.g., early matches with no FIFA rank)
@@ -36,7 +38,7 @@ def train_model():
     print(f"Training on {len(X_train)} matches, testing on {len(X_test)} matches.")
     
     model = xgb.XGBClassifier(
-        n_estimators=100, 
+        n_estimators=200, 
         learning_rate=0.01, 
         max_depth=3, 
         subsample=0.8,
